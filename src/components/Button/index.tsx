@@ -3,19 +3,26 @@ import type {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
 } from "react";
+import { Container } from "./styles";
 
 interface ButtonProps
   extends DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
-  > {}
+  > {
+  text: string;
+}
 
 export const Button = memo(
-  ({ onClick }: ButtonProps) => {
+  ({ onClick, text, ...props }: ButtonProps) => {
     return (
-      <button type="button" onClick={onClick}>
-        Press me
-      </button>
+      <Container
+        type="button"
+        onClick={onClick}
+        {...props}
+      >
+        <span>{text}</span>
+      </Container>
     );
   }
 );
