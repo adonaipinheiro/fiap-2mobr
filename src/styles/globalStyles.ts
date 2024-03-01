@@ -7,11 +7,11 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   h1 {
-    font-size: 1.6rem;
+    font-size: 3rem;
   }
 
   body {

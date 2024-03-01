@@ -1,4 +1,4 @@
-export { Home } from "./Home";
-export { Search } from "./Search";
-export { Results } from "./Results";
+export { SignIn } from "./SignIn";
+export { SignUp } from "./SignUp";
 export { NotFound } from "./NotFound";
+export { Dashboard } from "./Dashboard";

@@ -11,17 +11,28 @@ interface ButtonProps
     HTMLButtonElement
   > {
   text: string;
+  error?: string;
+  loading?: boolean;
 }
 
 export const Button = memo(
-  ({ onClick, text, ...props }: ButtonProps) => {
+  ({
+    onClick,
+    loading,
+    text,
+    ...props
+  }: ButtonProps) => {
     return (
       <Container
         type="button"
         onClick={onClick}
+        loading={loading}
+        disabled={loading}
         {...props}
       >
-        <span>{text}</span>
+        <span>
+          {loading ? "Carregando" : text}
+        </span>
       </Container>
     );
   }

@@ -1,12 +1,19 @@
+import { Button } from "../../components";
 import { Container } from "./styles";
+import { useNavigate } from "react-router-dom";
 
-function NotFound() {
+export function NotFound() {
+  const navigate = useNavigate();
+
+  function goBack() {
+    navigate(-1);
+  }
+
   return (
     <Container>
-      <strong>#404</strong>
-      <span>Página não encontrada</span>
+      <h1>#404</h1>
+      <strong>Página não encontrada</strong>
+      <Button onClick={goBack} text="Voltar" />
     </Container>
   );
 }
-
-export { NotFound };

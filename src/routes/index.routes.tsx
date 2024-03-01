@@ -7,16 +7,16 @@ import {
 
 // Pages
 import {
-  Home,
+  SignIn,
   NotFound,
-  Results,
-  Search,
+  SignUp,
+  Dashboard,
 } from "../pages";
 
 const routes = [
-  <Route path="/" element={<Home />} />,
-  <Route path="/search" element={<Search />} />,
-  <Route path="/results" element={<Results />} />,
+  <Route path="/" element={<Dashboard />} />,
+  <Route path="/signin" element={<SignIn />} />,
+  <Route path="/signup" element={<SignUp />} />,
   <Route path="*" element={<NotFound />} />,
 ];
 
