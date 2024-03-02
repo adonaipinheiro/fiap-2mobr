@@ -11,12 +11,16 @@ import {
   NotFound,
   Results,
   Search,
+  SignIn,
+  SignUp,
 } from "../pages";
 
 const routes = [
   <Route path="/" element={<Home />} />,
   <Route path="/search" element={<Search />} />,
   <Route path="/results" element={<Results />} />,
+  <Route path="/signin" element={<SignIn />} />,
+  <Route path="/signup" element={<SignUp />} />,
   <Route path="*" element={<NotFound />} />,
 ];
 
