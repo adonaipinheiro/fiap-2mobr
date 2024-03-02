@@ -2,10 +2,16 @@ import * as Yup from "yup";
 import { useSignIn } from ".";
 import { useSignUpForm } from "../../SignUp/hooks";
 import { toast } from "react-toastify";
+import { useUserStore } from "../../../hooks";
 
 export function useSignInForm() {
   const signUpHook = useSignUpForm();
-  const { goToDashboard } = useSignIn();
+  const { goToDashboard, handleSignInSuccess } =
+    useSignIn();
+
+  const setUser = useUserStore(
+    (state) => state.setUser
+  );
 
   const initialValues = {
     email: "",
@@ -48,8 +54,13 @@ export function useSignInForm() {
 
       if (user) {
         if (user.password === values.password) {
+          setUser({
+            name: user.name,
+            email: user.email,
+          });
           toast.success("Bem-vindo!");
           goToDashboard();
+          handleSignInSuccess();
         } else {
           toast.error(
             "Usuário ou senha inválida"
