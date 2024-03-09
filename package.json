@@ -10,6 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.12",
+    "@mui/icons-material": "^5.15.12",
+    "@mui/material": "^5.15.12",
     "@reduxjs/toolkit": "^2.2.1",
     "axios": "^1.6.7",
     "formik": "^2.4.5",
@@ -35,6 +40,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-plugin-pwa": "^0.19.2"
   }
 }

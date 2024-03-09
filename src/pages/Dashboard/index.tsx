@@ -1,10 +1,11 @@
-import { useEffect } from "react";
 import { useUserStore } from "../../hooks";
-import {
-  MoviesServices,
-  useService,
-} from "../../services";
 import { useAppSelector } from "../../store";
+import {
+  ImageListItem,
+  ImageList,
+  ImageListItemBar,
+} from "@mui/material";
+import { useGetPopularMoviesQuery } from "../../store/reducers/Movies/api/apiMoviesSlice";
 
 export function Dashboard() {
   const token = useAppSelector(
@@ -13,32 +14,54 @@ export function Dashboard() {
   const user = useUserStore(
     (state) => state.user
   );
-  const { callRequest, data, loading } =
-    useService(MoviesServices.getPopularMovies());
+  // const { callRequest, data, loading } =
+  //   useService(MoviesServices.getPopularMovies());
 
-  if (loading) {
-    <div>Carregando...</div>;
+  // if (loading) {
+  //   <div>Carregando...</div>;
+  // }
+
+  // useEffect(() => {
+  //   callRequest();
+  // }, []);
+
+  const { data, isLoading, error } =
+    useGetPopularMoviesQuery();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-  useEffect(() => {
-    callRequest();
-  }, []);
+  if (error) {
+    return <div>Ops, deu erro</div>;
+  }
 
   return (
     <div>
       <span>Dashboard</span>
       <span>TOKEN: {token}</span>
       <span>USER: {user.name}</span>
-      {data &&
-        data.results.map((movie, id) => (
-          <div key={id}>
-            {movie.id}
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt=""
-            />
-          </div>
-        ))}
+      {data && (
+        <ImageList
+          sx={{ width: "100%", height: "100%" }}
+          cols={4}
+          rowHeight={500}
+        >
+          {data.results.map((movie, id) => (
+            <ImageListItem key={id}>
+              {movie.id}
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt=""
+              />
+              <ImageListItemBar
+                position="below"
+                title={movie.title}
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+      )}
     </div>
   );
 }

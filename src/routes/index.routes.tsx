@@ -17,11 +17,11 @@ import {
 } from "../pages";
 
 const routes = [
+  <Route path="/signin" element={<SignIn />} />,
   <Route path="/" element={<Dashboard />} />,
   <Route path="/home" element={<Home />} />,
   <Route path="/search" element={<Search />} />,
   <Route path="/results" element={<Results />} />,
-  <Route path="/signin" element={<SignIn />} />,
   <Route path="/signup" element={<SignUp />} />,
   <Route path="*" element={<NotFound />} />,
 ];
